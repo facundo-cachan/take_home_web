@@ -1,4 +1,5 @@
 /** @type {import("pliny/config").PlinyConfig } */
+
 const siteMetadata = {
   title: 'Fulltime Forme',
   author: 'Facundo Cachan',

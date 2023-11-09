@@ -82,7 +82,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png" />
       <link rel="manifest" href="/manifest.webmanifest" />
-
       {androidIcons.map((icon) => (
         <link key={icon.href} {...icon} />
       ))}
