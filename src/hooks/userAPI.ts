@@ -4,7 +4,7 @@
  * @constructor
  */
 
-import { apiInstance } from '../app/api';
+import { apiInstance } from '@/app/api';
 
 class UserAPI {
   getInfo = async (user: string) => {
