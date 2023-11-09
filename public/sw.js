@@ -3,6 +3,7 @@
  * @param {{ mode: string; }} request
  */
 
+
 let STATIC_ASSETS = ["/build/", "/icons/"];
 
 let ASSET_CACHE = "asset-cache";
@@ -22,6 +23,7 @@ async function handleActivate() {
   debug("Service worker activated");
 }
 async function handleMessage(event) {
+  debug("Handling message", event);
   let cachePromises = new Map();
 
   if (event.data.type === "REMIX_NAVIGATION") {

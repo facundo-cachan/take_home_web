@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://take-home-web.vercel.app/',
   siteRepo: 'https://github.com/facundo-cachan/take_home_web',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',

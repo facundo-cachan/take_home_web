@@ -5,7 +5,7 @@
   "scripts": {
     "start": "next dev",
     "dev": "rm -rf .contentlayer && cross-env INIT_CWD=$PWD next dev",
-    "build": "cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
+    "build": "cross-env INIT_CWD=$PWD next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "tsc": "tsc",
@@ -57,6 +57,7 @@
     "lint-staged": "15.0.2",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.7",
+    "sharp": "^0.32.6",
     "typescript": "5.2.2"
   },
   "resolutions": {
