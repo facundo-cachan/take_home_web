@@ -1,5 +1,6 @@
-'use client'
 // @ts-ignore
+
+'use client'
 import { allUsers } from 'contentlayer/generated';
 import { useEffect, useState } from 'react';
 
@@ -15,9 +16,7 @@ import type UserProps from '@/types/user';
 export default function Page() {
   const user = 'facundo-cachan';
   const bio = allUsers.find((p) => p.slug === 'default')
-
-  const [published, setRepos] = useState<UserProps>();
-
+  const [published, setRepos] = useState<UserProps>()
 
   useEffect(() => {
     UserAPI.getInfo(user)
@@ -26,6 +25,6 @@ export default function Page() {
   }, [])
 
   return published ? (<UserLayout info={published}>
-    <MDXLayoutRenderer code={bio.body.code} />
+    {bio ? (<MDXLayoutRenderer code={bio.body.code} />) : (<p>loading...</p>)}
   </UserLayout>) : null
 }

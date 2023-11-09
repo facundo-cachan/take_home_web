@@ -4,7 +4,7 @@
  * @constructor
  */
 
-import { apiInstance } from '../app/api';
+import { apiInstance } from '@/app/api';
 
 type GetCommitsProps = { owner: string, repo: string }
 
