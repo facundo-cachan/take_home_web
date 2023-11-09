@@ -9,7 +9,7 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "tsc": "tsc",
-    "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts"
+    "lint": "next lint --fix --dir app --dir src"
   },
   "dependencies": {
     "@next/bundle-analyzer": "14.0.1",

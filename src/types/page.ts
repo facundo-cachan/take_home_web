@@ -1,5 +1,5 @@
 type PageProps = {
-  params: {},
+  params: unknown
   searchParams: {
     [key: string]: string
   }

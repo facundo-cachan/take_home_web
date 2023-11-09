@@ -1,21 +1,20 @@
-// @ts-ignore
-
 'use client'
-import { allUsers } from 'contentlayer/generated';
-import { useEffect, useState } from 'react';
+// @ts-ignore
+import { allUsers } from 'contentlayer/generated'
+import { useEffect, useState } from 'react'
 
-import { MDXLayoutRenderer } from 'pliny/mdx-components';
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
-import UserLayout from '@/layouts/UserLayout';
+import UserLayout from '@/layouts/UserLayout'
 
-import UserAPI from '@/hooks/userAPI';
+import UserAPI from '@/hooks/userAPI'
 
-import type UserProps from '@/types/user';
-
+import type UserProps from '@/types/user'
 
 export default function Page() {
-  const user = 'facundo-cachan';
+  const user = 'facundo-cachan'
   const bio = allUsers.find((p) => p.slug === 'default')
+
   const [published, setRepos] = useState<UserProps>()
 
   useEffect(() => {
@@ -24,7 +23,9 @@ export default function Page() {
       .catch((error: unknown) => console.log(error))
   }, [])
 
-  return published ? (<UserLayout info={published}>
-    {bio ? (<MDXLayoutRenderer code={bio.body.code} />) : (<p>loading...</p>)}
-  </UserLayout>) : null
+  return published ? (
+    <UserLayout info={published}>
+      {bio ? <MDXLayoutRenderer code={bio.body.code} /> : <p>loading...</p>}
+    </UserLayout>
+  ) : null
 }
