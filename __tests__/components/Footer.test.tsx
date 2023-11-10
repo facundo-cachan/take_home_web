@@ -1,7 +1,7 @@
-import Footer from '@/components/Footer';
-import { render, screen } from '@testing-library/react';
+import Footer from '@/components/Footer'
+import { render, screen } from '@testing-library/react'
 
-import siteMetadata from '@/data/siteMetadata';
+import siteMetadata from '@/data/siteMetadata'
 
 describe('Footer', () => {
   beforeEach(() => {

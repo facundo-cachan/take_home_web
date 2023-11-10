@@ -74,15 +74,15 @@ module.exports = () => {
           protocol: 'https',
           hostname: 'vercel.com',
           port: '',
-          pathname: '/**'
+          pathname: '/**',
         },
         {
           protocol: 'https',
           hostname: 'avatars.githubusercontent.com',
           port: '',
-          pathname: '/**'
-        }
-      ]
+          pathname: '/**',
+        },
+      ],
     },
     async headers() {
       return [

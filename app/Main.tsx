@@ -39,21 +39,15 @@ export default function Home({ commits, repo }: Props) {
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
                       <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                      <dd className="text-base font-medium leading-6 text-emerald-300 dark:text-emerald-700">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
                       <div className="border-red-1 space-y-6">
                         <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            {html_url ? (
-                              <Link href={html_url} className="text-gray-900 dark:text-gray-100">
-                                {message}
-                              </Link>
-                            ) : (
-                              message
-                            )}
+                          <h2 className="text-sm font-bold leading-8 tracking-tight text-gray-900 dark:text-gray-100 md:text-lg">
+                            {html_url ? <Link href={html_url}>{message}</Link> : message}
                           </h2>
                           <div className="flex flex-wrap">
                             {parents.map(({ sha, html_url }) => (
@@ -62,7 +56,9 @@ export default function Home({ commits, repo }: Props) {
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {verification.verified && '✅ '} {sha}
+                          {verification.verified && '✅ '}{' '}
+                          <span className="font-semibold text-black dark:text-slate-100">SHA</span>{' '}
+                          {sha.substring(0, 15)}
                         </div>
                       </div>
                     </div>
