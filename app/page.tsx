@@ -14,9 +14,12 @@ export default function Page() {
   const [published, setCommits] = useState<CommitsProps[]>([])
 
   useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+    }
     CommitAPI.getCommits({ owner, repo })
       .then(({ data }) => setCommits(() => data))
-      .catch((error: unknown) => console.log(error))
+      .catch((error: unknown) => console.error(error))
   }, [])
 
   return <Main commits={published} repo={repo} />

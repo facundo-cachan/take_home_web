@@ -21,7 +21,7 @@ export default function ReposLayout({ children, info }: Props) {
           {avatar_url && (
             <Image
               src={avatar_url}
-              alt="avatar"
+              alt={name}
               width={192}
               height={192}
               className="h-48 w-48 rounded-full"
