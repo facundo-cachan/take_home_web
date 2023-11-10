@@ -11,7 +11,8 @@
     "tsc": "tsc",
     "lint": "next lint --fix --dir app --dir src",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@next/bundle-analyzer": "14.0.1",
@@ -41,6 +42,7 @@
     "remark": "15.0.1",
     "remark-gfm": "4.0.0",
     "remark-math": "6.0.0",
+    "sharp": "^0.32.6",
     "tailwindcss": "3.3.5",
     "unist-util-visit": "5.0.0"
   },
@@ -55,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "6.10.0",
     "@typescript-eslint/parser": "6.10.0",
     "cross-env": "7.0.3",
+    "cssnano": "^6.0.1",
     "eslint": "8.53.0",
     "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "9.0.0",

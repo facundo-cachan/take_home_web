@@ -1,10 +1,10 @@
-import MobileNav from '@/components/MobileNav';
-import headerNavLinks from '@/data/headerNavLinks';
-import { fireEvent, render, screen } from '@testing-library/react';
+import MobileNav from '@/components/MobileNav'
+import headerNavLinks from '@/data/headerNavLinks'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('MobileNav', () => {
-  let button: HTMLButtonElement;
-  let nav: HTMLElement;
+  let button: HTMLButtonElement
+  let nav: HTMLElement
   beforeEach(() => {
     render(<MobileNav />)
     button = screen.getByLabelText('Toggle Menu', { selector: 'button' })
