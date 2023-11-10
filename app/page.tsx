@@ -14,7 +14,7 @@ export default function Page() {
   const [published, setCommits] = useState<CommitsProps[]>([])
 
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
       navigator.serviceWorker.register('/sw.js')
     }
     CommitAPI.getCommits({ owner, repo })

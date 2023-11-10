@@ -1,43 +1,38 @@
-import MobileNav from '@/components/MobileNav'
-import headerNavLinks from '@/data/headerNavLinks'
-import { fireEvent, render, screen } from '@testing-library/react'
+import MobileNav from '@/components/MobileNav';
+import headerNavLinks from '@/data/headerNavLinks';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('MobileNav', () => {
+  let button: HTMLButtonElement;
+  let nav: HTMLElement;
   beforeEach(() => {
     render(<MobileNav />)
+    button = screen.getByLabelText('Toggle Menu', { selector: 'button' })
+    nav = screen.getByTestId('navigation')
   })
 
-  it.skip('renders the mobile nav button', () => {
-    const button = screen.getByLabelText('Toggle Menu')
+  it('renders the mobile nav button', () => {
     expect(button).toBeInTheDocument()
   })
 
-  it.skip('opens the mobile nav when the button is clicked', () => {
-    const button = screen.getByLabelText('Toggle Menu')
-    fireEvent.click(button)
-    const nav = screen.getByRole('navigation')
-    expect(nav).toHaveClass('translate-x-0')
-  })
-
-  it.skip('closes the mobile nav when the button is clicked again', () => {
-    const button = screen.getByLabelText('Toggle Menu')
-    fireEvent.click(button)
-    fireEvent.click(button)
-    const nav = screen.getByRole('navigation')
+  it('opens the mobile nav when the button is clicked', () => {
     expect(nav).toHaveClass('translate-x-full')
   })
 
-  it.skip('renders the navigation links', () => {
+  it('closes the mobile nav when the button is clicked again', () => {
+    fireEvent.click(button)
+    expect(nav).toHaveClass('translate-x-0')
+  })
+
+  it('renders the navigation links', () => {
     const links = screen.getAllByRole('link')
     expect(links).toHaveLength(headerNavLinks.length)
   })
 
-  it.skip('closes the mobile nav when a link is clicked', () => {
-    const button = screen.getByLabelText('Toggle Menu')
+  it('closes the mobile nav when a link is clicked', () => {
     fireEvent.click(button)
     const link = screen.getByText(headerNavLinks[0].title)
     fireEvent.click(link)
-    const nav = screen.getByRole('navigation')
     expect(nav).toHaveClass('translate-x-full')
   })
 })
