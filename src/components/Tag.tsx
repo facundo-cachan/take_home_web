@@ -1,21 +1,29 @@
-import { slug } from 'github-slugger'
-import Link from 'next/link'
+import Link from 'next/link';
 
 interface Props {
   text: string
   href?: string
 }
 
-const Tag = ({ text, href }: Props) =>
-  href ? (
+const Tag = ({ text, href }: Props) => {
+  const label = text.split(' ').join('-')
+
+  return href ? (
     <Link
-      href={slug(href)}
-      className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+      href={href as string}
+      className={`mr-3
+      text-sm
+      font-medium
+      uppercase
+      text-primary-500
+      hover:text-primary-600
+      dark:hover:text-primary-400`}
     >
-      {text.split(' ').join('-')}
+      {label}
     </Link>
   ) : (
-    text
+    label
   )
+}
 
 export default Tag
