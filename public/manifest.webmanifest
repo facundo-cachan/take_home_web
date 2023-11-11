@@ -88,7 +88,7 @@
     }
   ],
   "id": "/",
-  "start_url": "/",
+  "start_url": "https://take-home-web.vercel.app/",
   "background_color": "#3367D6",
   "display_override": ["window-control-overlay", "minimal-ui"],
   "display": "standalone",

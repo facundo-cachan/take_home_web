@@ -26,74 +26,6 @@ async function handleMessage(event) {
   let cachePromises = new Map()
   await Promise.all(cachePromises.values())
 }
-async function handleFetch(event) {
-  let url = new URL(event.request.url)
-
-  if (isAssetRequest(event.request)) {
-    let cached = await caches.match(event.request, {
-      cacheName: ASSET_CACHE,
-      ignoreVary: true,
-      ignoreSearch: true,
-    })
-    if (cached) {
-      debug('Serving asset from cache', url.pathname)
-      return cached
-    }
-
-    debug('Serving asset from network', url.pathname)
-    let response = await fetch(event.request)
-    if (response.status === 200) {
-      let cache = await caches.open(ASSET_CACHE)
-      await cache.put(event.request, response.clone())
-    }
-    return response
-  }
-
-  if (isLoaderRequest(event.request)) {
-    try {
-      debug('Serving data from network', url.pathname + url.search)
-      let response = await fetch(event.request.clone())
-      let cache = await caches.open(DATA_CACHE)
-      await cache.put(event.request, response.clone())
-      return response
-    } catch (error) {
-      debug('Serving data from network failed, falling back to cache', url.pathname + url.search)
-      let response = await caches.match(event.request)
-      if (response) {
-        response.headers.set('X-Remix-Worker', 'yes')
-        return response
-      }
-
-      const headers = new Headers()
-      headers.append('X-Remix-Catch', 'yes')
-      headers.append('X-Remix-Worker', 'yes')
-
-      return new Response('Network Error', {
-        status: 500,
-        headers,
-      })
-    }
-  }
-
-  if (isDocumentGetRequest(event.request)) {
-    try {
-      debug('Serving document from network', url.pathname)
-      let response = await fetch(event.request)
-      let cache = await caches.open(DOCUMENT_CACHE)
-      await cache.put(event.request, response.clone())
-      return response
-    } catch (error) {
-      debug('Serving document from network failed, falling back to cache', url.pathname)
-      let response = await caches.match(event.request)
-      if (response) {
-        return response
-      }
-      throw error
-    }
-  }
-
-  return fetch(event.request.clone())
-}
 async function appHandleFetch({ error, response }) {
   if (error) {
     throw error
@@ -126,20 +58,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('message', (event) => {
   event.waitUntil(handleMessage(event))
 })
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    (async () => {
-      let result = {}
-      try {
-        result.response = await handleFetch(event)
-      } catch (error) {
-        result.error = error
-      }
-
-      return appHandleFetch(event, result)
-    })()
-  )
-})
 self.addEventListener('load', () => {
   console.log('load')
   console.log('serviceWorker', navigator)
@@ -151,7 +69,7 @@ self.addEventListener('push', (event) => {
   console.log('[Service Worker] Push Received.')
   console.log(`[Service Worker] Push had this data: "${event.data?.text()}"`)
 
-  const title = 'Push Codelab'
+  const title = 'Fulltime Force'
   const options = {
     body: 'Yay it works.',
     icon: 'images/icon.png',
